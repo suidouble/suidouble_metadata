@@ -7,10 +7,10 @@ The first step is to have `vector<u8>` ready to store metadata.
 Declare it anywhere, assign to the `struct` you are going to use in your package, like:
 
 ```rust
-    struct YourPerfectNFT has key, store {
-        // ...,
-        metadata: vector<u8>,
-    }
+struct YourPerfectNFT has key, store {
+    // ...,
+    metadata: vector<u8>,
+}
 ```
 
 and don't think about any issues with contract upgrades in the future. 
@@ -19,7 +19,7 @@ You'll be able to store/manage any primitive data in vector as chunks.
 And here's the library to help you with this.
 
 ```rust
-    use suidouble_metadata::metadata;
+use suidouble_metadata::metadata;
 ```
 
 #### Quick usage example
@@ -52,15 +52,15 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 Each chunk in the metadata vector has unique chunk_id of `u32`, you can use it as number directly:
 
 ```rust
-    metadata::set(&mut meta, 777, &(b"something"));
-    metadata::get_vec_u8(&meta, 777);
+metadata::set(&mut meta, 777, &(b"something"));
+metadata::get_vec_u8(&meta, 777);
 ```
 
 or use a helping `key` hash function, transforming vector<u8> (in-code strings mostly) to u32:
 
 ```rust
-    metadata::set(&mut meta, metadata::key(&b"propertyname"), &(b"something"));
-    metadata::get_vec_u8(&meta, metadata::key(&b"propertyname"), 777);
+metadata::set(&mut meta, metadata::key(&b"propertyname"), &(b"something"));
+metadata::get_vec_u8(&meta, metadata::key(&b"propertyname"), 777);
 ```
 
 `key` function produces different u32 values for different strings, 
@@ -82,7 +82,7 @@ different, but may be repeated values for long strings
 returned u32 may be unpacked back to string using `unpack_key` function   
 
 ```rust
-    metadata::unpack_key(key: u32): vector<u8>
+metadata::unpack_key(key: u32): vector<u8>
 ```
 
 first 4 chars kept (though uppercased)
@@ -95,8 +95,8 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
 
 #### set metadata
 
-```move
-    public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
+```rust
+public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
 ```
 
 
