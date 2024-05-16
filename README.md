@@ -1,7 +1,7 @@
 # suidouble_metadata
 Move library and a set of tools to store/retrieve/manage any type of data inside u8 vector
 
-#### Using
+#### Usage
 
 The first step is to have `vector<u8>` ready to store metadata. 
 Declare it anywhere, assign to the `struct` you are going to use in your package, like:
@@ -99,8 +99,24 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
 public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
 ```
 
+#### Unpacking the key back to vector<u8>/string
 
-#### Runnin unit tets
+u32 created with `key` function may be unpacked back to string using `unpack_key`:
+
+```rust
+metadata::unpack_key(key: u32): vector<u8>
+```
+
+first 4 chars kept (though uppercased)
+ - unpack_key(key(b"TEST")) == b"TEST"
+ - unpack_key(key(b"test")) == b"TEST"
+
+may have an extra hash at the end in case long string (>4 chars) was hashed:
+ - unpack_key(key(b"TEST_long_string")) == b"TEST*005"
+ - unpack_key(key(b"TEST_other_string")) == b"TEST*119"
+
+
+#### Running unit tets
 
 Compressing function is expensive and slow. If unit test fails with timeout, increase gas for it:
 
