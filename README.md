@@ -6,9 +6,9 @@ Move library and a set of tools to store/retrieve/manage any type of data inside
 The first step is to have `vector<u8>` ready to store metadata. 
 Declare it anywhere, assign to the `struct` you are going to use in your package, like:
 
-```move
+```rust
     struct YourPerfectNFT has key, store {
-        ...,
+        // ...,
         metadata: vector<u8>,
     }
 ```
@@ -18,7 +18,7 @@ You'll be able to store/manage any primitive data in vector as chunks.
 
 And here's the library to help you with this.
 
-```move
+```rust
     use suidouble_metadata::metadata;
 ```
 
@@ -51,14 +51,14 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 
 Each chunk in the metadata vector has unique chunk_id of `u32`, you can use it as number directly:
 
-```move
+```rust
     metadata::set(&mut meta, 777, &(b"something"));
     metadata::get_vec_u8(&meta, 777);
 ```
 
 or use a helping `key` hash function, transforming vector<u8> (in-code strings mostly) to u32:
 
-```move
+```rust
     metadata::set(&mut meta, metadata::key(&b"propertyname"), &(b"something"));
     metadata::get_vec_u8(&meta, metadata::key(&b"propertyname"), 777);
 ```
@@ -81,7 +81,7 @@ different, but may be repeated values for long strings
 
 returned u32 may be unpacked back to string using `unpack_key` function   
 
-```move
+```rust
     metadata::unpack_key(key: u32): vector<u8>
 ```
 
