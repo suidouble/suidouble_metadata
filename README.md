@@ -13,8 +13,8 @@ struct YourPerfectNFT has key, store {
 }
 ```
 
-and don't think about any issues with contract upgrades in the future. 
-You'll be able to store/manage any primitive data in vector as chunks. 
+and don't have any issues with contract upgrades anymore. 
+You'll be able to store/manage any primitive data in that metadata vector. 
 
 And here's the library to help you with this.
 
