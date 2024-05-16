@@ -79,7 +79,7 @@ different, but may be repeated values for long strings
  - key(&b"long_string_test_1") != key(&b"long_string_test_2")
  - key(&b"long_string_test_01") == key(&b"long_string_test_10")
 
-returned u32 may be unpacked back to string using `unpack_key` function   
+returned u32 may be unpacked back to string using [`unpack_key` function](#unpacking-the-key-back-to-vectorstring)   
 
 ```rust
 metadata::unpack_key(key: u32): vector<u8>
