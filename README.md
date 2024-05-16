@@ -107,6 +107,8 @@ metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
 metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
 ```
 
+#### Get information from metadata
+
 It's generally your responsibility to keep `key -> data type` relation constant, 
 but there're few helpful methods if you get lost and want to double-check:
 
@@ -121,6 +123,22 @@ metadata::get_chunks_ids(&meta): vector<u32>
 ```
 NB: remember you can [convert that u32's to strings](#unpacking-the-key-back-to-vectorstring)  if you were used [`key` method](#key-hash-function) 
 
+Check if specific chunk exists/set:
+```rust
+metadata::has_chunk(&meta, metadata::key(b"chunk_id")): bool
+``` 
+
+Check if specific chunk exists/set and has needed data type:
+```rust
+metadata::has_chunk_of_type<u64>(&meta, metadata::key(b"chunk_id")): bool
+metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"chunk_id")): bool
+// would work for any data type we have a getter for
+``` 
+
+If specific chunk stores vector, you can get count of elements in it without deserializing all chunk:
+```rust
+metadata::get_vec_length(&meta, metadata::key(b"chunk_id")): u64
+```
 
 #### Key hash function
 
