@@ -1,5 +1,5 @@
 # suidouble_metadata
-Move library and a set of tools to store/retrieve/manage any type of data inside u8 vector
+Move library and a set of tools to store/retrieve/manage any type of data as chunks in u8 vector.
 
 #### Usage
 
@@ -50,6 +50,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
  - [Set metadata data](#set-metadata-data)
  - [Get data from metadata](#get-data-from-metadata)
  - [Get information from metadata/Check chunks](#get-information-from-metadata)
+ - [Remove data from metadata](#remove-data-from-metadata)
  - [Key hash function](#key-hash-function)
  - [Unpacking the key back to vector<u8>/string](#unpacking-the-key-back-to-vectorstring)
  - [Running unit tests](#running-unit-tets)
@@ -115,7 +116,6 @@ metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
 metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
 ```
 
-
 #### Get information from metadata
 
 It's generally your responsibility to keep `key -> data type` relation constant, 
@@ -147,6 +147,13 @@ metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"chunk_id")):
 If specific chunk stores vector, you can get count of elements in it without deserializing all chunk:
 ```rust
 metadata::get_vec_length(&meta, metadata::key(b"chunk_id")): u64
+```
+
+#### Remove chunk from metadata
+
+Simple as is:
+```rust
+metadata::remove_chunk(&mut meta, metadata::key(b"chunk_id")): bool
 ```
 
 #### Key hash function
