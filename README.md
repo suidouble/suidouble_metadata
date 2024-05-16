@@ -151,6 +151,21 @@ metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
 metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
 ```
 
+It's generally your responsibility to keep `key -> data type` relation constant, 
+but there're few helpful methods if you get lost and want to double-check:
+
+Get total count of chunks in metadata vector:
+```rust
+metadata::get_chunks_count(&meta): u32
+``` 
+
+Get vector of chunk_id from metadata vector: 
+```rust
+metadata::get_chunks_ids(&meta): vector<u32>
+```
+NB: remember you can [convert that u32's to strings](#unpacking-the-key-back-to-vectorstring)  if you were used [`key` method](#unpacking-the-key-back-to-vectorstring) 
+
+
 #### Unpacking the key back to vector<u8>/string
 
 u32 created with `key` function may be unpacked back to string using `unpack_key`:
