@@ -25,26 +25,26 @@ And here's the library to help you with this.
 #### quick usage example
 
 ```rust
-    let meta: vector<u8> = vector::empty();
+let meta: vector<u8> = vector::empty();
 
-    metadata::set(&mut meta, metadata::key(b"your_age"), &(27u8));
-    metadata::set(&mut meta, metadata::key(b"your_mood"), b"happy");
+metadata::set(&mut meta, metadata::key(b"your_age"), &(27u8));
+metadata::set(&mut meta, metadata::key(b"your_mood"), b"happy");
 
-    if (!metadata::get_bool(&meta, metadata::key(b"to_the_moon?"), false)) {
-        metadata::set(&mut meta, metadata::key(b"to_the_moon?"), true);
+if (!metadata::get_bool(&meta, metadata::key(b"to_the_moon?"), false)) {
+    metadata::set(&mut meta, metadata::key(b"to_the_moon?"), true);
 
-        let adjust_to_the_moon_flag_times = metadata::get_u256(&meta, metadata::key(b"adjust_to_the_moon_flag_times?"), 0);
-        metadata::set(&mut meta, metadata::key(b"adjust_to_the_moon_flag_times?"), &(adjust_to_the_moon_flag_times + 1));
-    };
+    let adjust_to_the_moon_flag_times = metadata::get_u256(&meta, metadata::key(b"adjust_to_the_moon_flag_times?"), 0);
+    metadata::set(&mut meta, metadata::key(b"adjust_to_the_moon_flag_times?"), &(adjust_to_the_moon_flag_times + 1));
+};
 
-    if (!metadata::has_chunk(&meta, metadata::key(b"once"))) {
-        metadata::set(&mut meta, metadata::key(b"once"), &(vector::singleton<u256>(4234234)));
-    }
+if (!metadata::has_chunk(&meta, metadata::key(b"once"))) {
+    metadata::set(&mut meta, metadata::key(b"once"), &(vector::singleton<u256>(4234234)));
+}
 
-    if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))) {
-        let haha: vector<address> = vector[@0xC0FFEE, @0xABBA, @0xBABE, @0xC0DE1, @0xBEEF];
-        metadata::set(&mut meta, metadata::key(b"once"), &haha);
-    }
+if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))) {
+    let haha: vector<address> = vector[@0xC0FFEE, @0xABBA, @0xBABE, @0xC0DE1, @0xBEEF];
+    metadata::set(&mut meta, metadata::key(b"once"), &haha);
+}
 ```
 
 #### key
