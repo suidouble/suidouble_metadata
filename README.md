@@ -107,6 +107,7 @@ metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
 metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
 ```
 
+
 #### Get information from metadata
 
 It's generally your responsibility to keep `key -> data type` relation constant, 
