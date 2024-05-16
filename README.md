@@ -117,7 +117,7 @@ Function signature is the same for all value types, so would work:
 metadata::set(&mut meta, metadata::key(b"u8property"), &(27u8));
 metadata::set(&mut meta, metadata::key(b"u8property"), &(vector_of_u8_u8));
 ```
-#### Get data from metadata
+## Get data from metadata
 
 Basic `get` function returs an `Option<vector<u8>>`, and there're a lot of extra methods to get each data type:
 ```rust
