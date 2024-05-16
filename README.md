@@ -93,10 +93,62 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
  - unpack_key(key(b"TEST_long_string")) == b"TEST*005"
  - unpack_key(key(b"TEST_other_string")) == b"TEST*119"
 
-#### set metadata
+#### Set metadata data
 
 ```rust
 public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
+```
+
+set function accepts any primitive data type for a value:
+    - bool
+    - u8, u64, u128, u256
+    - address
+    - vector<bool>
+    - vector<u8>, vector<u64>, vector<u128> 
+    - vector<address>
+    - vector<vector<u8>>
+
+letting you store any primitive data you can imagine. 
+Futhermore, there's compress function to help you fit everything into 250KB Sui's object size limit.
+
+Function signature is the same for all value types, so would work:
+
+```rust
+metadata::set(&mut meta, metadata::key(b"u8property"), &(27u8));
+metadata::set(&mut meta, metadata::key(b"u8property"), &(vector_of_u8_u8));
+```
+#### Get data from metadata
+
+Basic `get` function returs an `Option<vector<u8>>`, and there're a lot of extra methods to get each data type:
+```rust
+metadata::get_option_bool(&meta, metadata::key(b"key"))    : Option<bool>;
+metadata::get_option_u8(&meta, metadata::key(b"key"))      : Option<u8>;
+metadata::get_option_u64(&meta, metadata::key(b"key"))     : Option<u64>;
+metadata::get_option_u128(&meta, metadata::key(b"key"))    : Option<u128>;
+metadata::get_option_u256(&meta, metadata::key(b"key"))    : Option<u256>;
+metadata::get_option_address(&meta, metadata::key(b"key")) : Option<address>;
+metadata::get_option_vec_bool(&meta, metadata::key(b"key"))     : Option<vector<bool>>;
+metadata::get_option_vec_u8(&meta, metadata::key(b"key"))       : Option<vector<u8>>;
+metadata::get_option_vec_u64(&meta, metadata::key(b"key"))      : Option<vector<u64>>;
+metadata::get_option_vec_u128(&meta, metadata::key(b"key"))     : Option<vector<u128>>;
+metadata::get_option_vec_address(&meta, metadata::key(b"key"))  : Option<vector<address>>;
+metadata::get_option_vec_vec_u8(&meta, metadata::key(b"key"))   : Option<vector<vector<u8>>>;
+```
+
+and additional unwrappers to let you easly get with default, if there's no data:
+```rust
+metadata::get_bool(&meta, metadata::key(b"key"), false)      : bool;  // default is false
+metadata::get_u8(&meta, metadata::key(b"key"), 111)          : u8;  // default is 111
+metadata::get_u8(&meta, metadata::key(b"key"), 111)          : u8;  // default is 111
+metadata::get_u64(&meta, metadata::key(b"key"), 999)         : u64;  // default is 999
+metadata::get_address(&meta, metadata::key(b"key"), @0xBEEF) : address;  // default is @0xBEEF
+
+metadata::get_vec_bool(&meta, metadata::key(b"key"))     : vector<bool>;  // get_vec_* returns empty vector if there's nothing
+metadata::get_vec_u8(&meta, metadata::key(b"key"))       : vector<u8>;
+metadata::get_vec_u64(&meta, metadata::key(b"key"))      : vector<u64>;
+metadata::get_vec_u128(&meta, metadata::key(b"key"))     : vector<u128>;
+metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
+metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
 ```
 
 #### Unpacking the key back to vector<u8>/string
