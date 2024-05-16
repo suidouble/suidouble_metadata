@@ -22,7 +22,7 @@ And here's the library to help you with this.
     use suidouble_metadata::metadata;
 ```
 
-#### quick usage example
+#### Quick usage example
 
 ```rust
 let meta: vector<u8> = vector::empty();
@@ -47,7 +47,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 }
 ```
 
-#### key
+#### Key hash function
 
 Each chunk in the metadata vector has unique chunk_id of `u32`, you can use it as number directly:
 
