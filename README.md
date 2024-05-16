@@ -100,13 +100,14 @@ public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
 ```
 
 set function accepts any primitive data type for a value:
-    - bool
-    - u8, u64, u128, u256
-    - address
-    - vector<bool>
-    - vector<u8>, vector<u64>, vector<u128> 
-    - vector<address>
-    - vector<vector<u8>>
+
+ - bool
+ - u8, u64, u128, u256
+ - address
+ - vector<bool>
+ - vector<u8>, vector<u64>, vector<u128> 
+ - vector<address>
+ - vector<vector<u8>>
 
 letting you store any primitive data you can imagine. 
 Futhermore, there's compress function to help you fit everything into 250KB Sui's object size limit.
