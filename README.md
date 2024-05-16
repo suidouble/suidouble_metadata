@@ -47,6 +47,14 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 }
 ```
 
+ - [Set metadata data](#set-metadata-data)
+ - [Get data from metadata](#get-data-from-metadata)
+ - [Get information from metadata/Check chunks](#get-information-from-metadata)
+ - [Key hash function](#key-hash-function)
+ - [Unpacking the key back to vector<u8>/string](#unpacking-the-key-back-to-vectorstring)
+ - [Running unit tests](#running-unit-tets)
+
+
 #### Set metadata data
 
 ```rust
@@ -199,3 +207,7 @@ Compressing function is expensive and slow. If unit test fails with timeout, inc
 ```bash
 sui move test --gas-limit 5000000000
 ```
+
+#### License
+
+GNU AFFERO GENERAL PUBLIC LICENSE
