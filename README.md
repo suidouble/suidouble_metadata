@@ -24,7 +24,7 @@ And here's the library to help you with this.
 
 #### quick usage example
 
-```move
+```rust
     let meta: vector<u8> = vector::empty();
 
     metadata::set(&mut meta, metadata::key(b"your_age"), &(27u8));
