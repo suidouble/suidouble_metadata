@@ -163,7 +163,7 @@ Get vector of chunk_id from metadata vector:
 ```rust
 metadata::get_chunks_ids(&meta): vector<u32>
 ```
-NB: remember you can [convert that u32's to strings](#unpacking-the-key-back-to-vectorstring)  if you were used [`key` method](#unpacking-the-key-back-to-vectorstring) 
+NB: remember you can [convert that u32's to strings](#unpacking-the-key-back-to-vectorstring)  if you were used [`key` method](#key-hash-function) 
 
 
 #### Unpacking the key back to vector<u8>/string
