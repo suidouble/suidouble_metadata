@@ -53,6 +53,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
  - [Remove data from metadata](#remove-chunk-from-metadata)
  - [Key hash function](#key-hash-function)
  - [Unpacking the key back to vector<u8>/string](#unpacking-the-key-back-to-vectorstring)
+ - [Compress metadata/chunk](#compress-byte-vector)
  - [Running unit tests](#running-unit-tets)
 
 
@@ -206,7 +207,7 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
  - unpack_key(key(b"TEST_long_string")) == b"TEST*005"
  - unpack_key(key(b"TEST_other_string")) == b"TEST*119"
 
-#### Compress vector<u8>
+#### Compress byte vector
 
 You may optionally compress all metadata or specific chunk in it.
 There's function to compress vector<u8> using sort of LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme:
