@@ -206,6 +206,22 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
  - unpack_key(key(b"TEST_long_string")) == b"TEST*005"
  - unpack_key(key(b"TEST_other_string")) == b"TEST*119"
 
+#### Compress vector<u8>
+
+You may optionally compress all metadata or specific chunk in it.
+There's function to compress vector<u8> using sort of LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme:
+
+```rust
+let compressed: vector<u8> = metadata::compress(&rawvetoru8);
+```
+
+and decompress back to original:
+
+```rust
+let decompressed: vector<u8> = metadata::decompress(&compressed);
+```
+
+Compressing is slow and expensive. Decompressing is ok. So as a general advice, it would be better to compress the data on the client side if you plan to store something heavy to use as data in your package code.
 
 #### Running unit tets
 
