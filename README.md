@@ -25,7 +25,7 @@ use suidouble_metadata::metadata;
 #### Quick usage example
 
 ```rust
-let meta: vector<u8> = vector::empty();
+let meta: vector<u8> = vector::empty(); // or = b"";
 
 metadata::set(&mut meta, metadata::key(b"your_age"), &(27u8));
 metadata::set(&mut meta, metadata::key(b"your_mood"), b"happy");
@@ -231,6 +231,11 @@ Compressing function is expensive and slow. If unit test fails with timeout, inc
 ```bash
 sui move test --gas-limit 5000000000
 ```
+
+#### todo
+
+ - optimization of compress function
+ - javacript library to deserialize data on the client side and perform compression to prepare vector to sui
 
 #### License
 
