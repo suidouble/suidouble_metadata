@@ -5,8 +5,8 @@ module suidouble_metadata::metadata_tests {
     // use sui::test_scenario as ts;
     // use sui::transfer;
     use suidouble_metadata::metadata;
-    use std::vector;
-    use std::option;
+    // use std::vector;
+    // use std::option;
     // use std::debug;
 
     // use sui::bcs;
@@ -54,7 +54,7 @@ module suidouble_metadata::metadata_tests {
         assert!( b"TEST*038" == metadata::unpack_key( metadata::key(&b"test_long_string10") ) , 0);
 
         // so you can use strings as keys for metadata chunks:
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         metadata::set(&mut metadata, metadata::key(&b"test"), &(5 as u64));
         metadata::set(&mut metadata, metadata::key(&b"abba"), &(6 as u64));
         metadata::set(&mut metadata, metadata::key(&b"someproperty"), &(6 as u64));
@@ -111,7 +111,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_of_type_checks() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         let test_chunk_id : u32 = metadata::key(&b"some_chunk_id_to_hash"); // any u32 would work
 
         metadata::set(&mut metadata, test_chunk_id, &(1234567890u256));
@@ -174,7 +174,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vec_u8() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let test_chunk_id = 3; // any u32 would work
         let test_data: vector<u8> = vector[0,1,2,3,4,5,6,7,8,9];
@@ -198,7 +198,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vec_u64_and_u128() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let test_chunk_id_64 = 3; // any u32 would work
         let test_chunk_id_128 = 4; // any u32 would work
@@ -220,7 +220,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vec_bool() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let test_chunk_id = 3; // any u32 would work
         let test_data: vector<bool> = vector[true, false, false, true];
@@ -238,7 +238,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vec_address() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let test_chunk_id = 3; // any u32 would work
         let test_data: vector<address> = vector[@0xC0FFEE, @0xABBA, @0xBABE, @0xC0DE1, @0xBEEF];
@@ -256,7 +256,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vec_vec_u8() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let test_chunk_id = 3; // any u32 would work
         let test_data: vector<vector<u8>> = vector[
@@ -280,7 +280,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_vector_clamp() {
-        let metadata: vector<u8> = vector[0,1,2,3,4,5,6,7,8,9];
+        let mut metadata: vector<u8> = vector[0,1,2,3,4,5,6,7,8,9];
         metadata::clamp(&mut metadata, 1, 0); // clamp length of 0 do nothing
         assert!(metadata == vector[0,1,2,3,4,5,6,7,8,9], 0);
 
@@ -300,7 +300,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun let_update_metadata_with_different_type() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
 
         // metadata lets you update metadata chunk assigning different data type to it
         let very_first = metadata::get(&metadata, 0);
@@ -321,7 +321,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun test_u8() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
         
         let value_u8 : u8 = 222;
         let set_success = metadata::set(&mut metadata, 3, &value_u8);
@@ -343,7 +343,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun initialization() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
 
         assert!(!metadata::has_chunk(&metadata, 0), 0);
         let very_first = metadata::get(&metadata, 0);
@@ -411,7 +411,7 @@ module suidouble_metadata::metadata_tests {
 
     #[test]
     fun dont_throw_anything() {
-        let metadata: vector<u8> = vector[];
+        let mut metadata: vector<u8> = vector[];
 
         let very_first = metadata::get(&metadata, 0);
         assert!(option::is_none(&very_first), 0);

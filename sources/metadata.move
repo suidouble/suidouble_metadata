@@ -3,12 +3,12 @@
 module suidouble_metadata::metadata {
     use suidouble_metadata::compress;
     // use std::debug;
-    use std::vector;
+    // use std::vector;
     use sui::bcs;
     use sui::address;
 
     // use std::bcs as stdbcs;
-    use std::option::{Option, none, some, is_none, destroy_some, destroy_with_default};
+    use std::option::{none, some, is_none, destroy_some, destroy_with_default};
 
     use std::type_name;
     use std::ascii::{as_bytes};
@@ -27,12 +27,15 @@ module suidouble_metadata::metadata {
     /// The index into the vector is out of bounds
     const EINDEX_OUT_OF_BOUNDS: u64 = 0x20000;
 
+    // compress vector<u8> using  LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme
+    // does 7.5x compression on a test ascii data ( see compress_tests.move )
     public fun compress(data_ref: &vector<u8>): vector<u8> {
-        compress::pack_u16_into_u8(&compress::compress16(data_ref))
+        compress::compress(data_ref)
     }
 
+    // decompress compressed vector<u8> back to original
     public fun decompress(data_ref: &vector<u8>): vector<u8> {
-        compress::decompress16(&compress::unpack_u8_into_u16(data_ref))
+        compress::decompress(data_ref)
     }
 
     /**
@@ -52,19 +55,19 @@ module suidouble_metadata::metadata {
     *     returned u32 may be unpacked back to string using unpack_key  function     
     */
     public fun key(str_ref: &vector<u8>): u32 {
-        let i = vector::length(str_ref);
-        let significant_i = i;
+        let mut i = vector::length(str_ref);
+        let mut significant_i = i;
         if (significant_i > 4) {
             significant_i = 4;
         };
 
-        let buffer: u32 = 0;
-        let shift = 0;
+        let mut buffer: u32 = 0;
+        let mut shift = 0;
         
         // first - pack first 4 chars of the string as 6-bites chars, packing them into 3 bytes
         while (significant_i > 0) {
             significant_i = significant_i - 1;
-            let char = *vector::borrow(str_ref, significant_i);
+            let mut char = *vector::borrow(str_ref, significant_i);
             if (char >= 97) {
                 // lowercase to uppercase
                 char = char - 32;
@@ -80,9 +83,9 @@ module suidouble_metadata::metadata {
         // we have 1 byte left in u32 to pack everything what is left as a very simple hash, just sum up all left bytes and mod it by 256
         if (i > 4) {
             i = i - 1;
-            let sum: u32 = 0;
+            let mut sum: u32 = 0;
             while (i >= 4) {
-                let char = *vector::borrow(str_ref, i);
+                let mut char = *vector::borrow(str_ref, i);
                 if (char >= 97) {
                     // lowercase to uppercase
                     char = char - 32;
@@ -113,9 +116,9 @@ module suidouble_metadata::metadata {
     *         unpack_key(key(b"TEST_other_string")) == b"TEST*119"
     */
     public fun unpack_key(key: u32): vector<u8> {
-        let significant_i = 4;
-        let buffer: u32 = key;
-        let ret = vector::empty();
+        let mut significant_i = 4;
+        let mut buffer: u32 = key;
+        let mut ret = vector::empty();
 
         // first - unpack 6bits chars to chars, assuming we have 4 chars in 3 bytes
         while (significant_i > 0) {
@@ -158,10 +161,10 @@ module suidouble_metadata::metadata {
     *  Get chunks ids in metadata vector<u8>
     */
     public fun get_chunks_ids(metadata_ref: &vector<u8>): vector<u32> {
-        let ret:vector<u32> = vector::empty();
+        let mut ret:vector<u32> = vector::empty();
         // walk though metadata to find all chunks
         let metadata_length = vector::length(metadata_ref);
-        let pos = 1;  // skip byte #0 as it's metadata version
+        let mut pos = 1;  // skip byte #0 as it's metadata version
 
         while (pos < metadata_length) {
             // first byte in chunk is chunk_id
@@ -186,7 +189,7 @@ module suidouble_metadata::metadata {
             return 0
         };
 
-        let pos = 1; // skip byte #0 as it's metadata version
+        let mut pos = 1; // skip byte #0 as it's metadata version
 
         while (pos < metadata_length) {
             // first byte in chunk is chunk_id
@@ -243,7 +246,7 @@ module suidouble_metadata::metadata {
         let data_length      = get_chunk_length_at_offset(metadata, data_offset);
 
         let chunk_header_length : u8 = 8;
-        let as_bytes = bcs::to_bytes(value);
+        let mut as_bytes = bcs::to_bytes(value);
         let as_bytes_length = vector::length(&as_bytes);
 
         // check for overflow. @todo?
@@ -255,7 +258,7 @@ module suidouble_metadata::metadata {
 
                 let current_metadata_length = vector::length(metadata);
                 let piece_added_at = current_metadata_length;
-                let piece_to_be_moved_to = data_offset + (data_length as u64);
+                let mut piece_to_be_moved_to = data_offset + (data_length as u64);
 
                 // taking the last byte from data, add it to the end of metadata, swap it to needed position, and remove old byte
                 while (!vector::is_empty(&as_bytes)) {
@@ -370,8 +373,8 @@ module suidouble_metadata::metadata {
             *vector::borrow(as_bytes, 4) == 111 &&
             *vector::borrow(as_bytes, 5) == 114) {
 
-                let item_byte_length = 1;
-                let check_for_bool = false;
+                let mut item_byte_length = 1;
+                let mut check_for_bool = false;
 
                 if (*vector::borrow(as_bytes, 7) == 117) { // u
                     // so it's expected to be vector<u8> ... vector<u256>, u8, u16, u32, u64, u128, u256
@@ -408,7 +411,7 @@ module suidouble_metadata::metadata {
                 if (check_for_bool) {
                     // u8 is same length, but allows for other than 0-1 in bytes, so we get vec as u8 and check if it's ok as bool
                     let vec_as_u8 = get_vec_u8(metadata, chunk_id);
-                    let i = vector::length(&vec_as_u8);
+                    let mut i = vector::length(&vec_as_u8);
                     while (i > 0) {
                         i = i - 1;
                         if (*vector::borrow(&vec_as_u8, i) > 1) {  // if it's not [0,1] there
@@ -444,8 +447,8 @@ module suidouble_metadata::metadata {
         };
 
 
-        let ret:vector<u8> = vector::empty();
-        let i = data_offset + 8; // skip chunk header
+        let mut ret:vector<u8> = vector::empty();
+        let mut i = data_offset + 8; // skip chunk header
         let till = data_offset + (data_length as u64);
         while (i < till) {
             let byte = *vector::borrow(metadata_ref, i);
@@ -657,7 +660,7 @@ module suidouble_metadata::metadata {
         let total_length = vector::length(bytes);
         if (offset + length > total_length) abort EINDEX_OUT_OF_BOUNDS;
 
-        let i = offset;
+        let mut i = offset;
         let move_till = total_length - length;
         // move bytes one by one to the end of the vector in O(N)
         while (i < move_till) {
