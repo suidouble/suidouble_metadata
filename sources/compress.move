@@ -23,16 +23,11 @@ module suidouble_metadata::compress {
     /**
     *   compress vector<u8> using some LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme
     *      up to 8x compression on the test ascii data (see unit test)
-    *      may get longer vec on shorter input vec though
+    *      may get longer vec on shorter input vec or very random data though
     *
     *   result vector<u8> may be decoded back to original vector<u8> using `decompress` function
     *
-    *   It's expensive!!! Confider compressing data on the client side and pass to contract methods already compressed. 
-    *   Decompressing is much faster/cheaper. 
-    *
     *    note: `sui move test --gas-limit 5000000000` is your friend
-    *
-    *   @todo: would be much cheaper with some sort of HashMap instead of vector<vector<u8>> for dictionary.
     */
     public fun compress8(data_ref: &vector<u8>): vector<u8> {
         // compress vector<u8> using something like simple LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme
