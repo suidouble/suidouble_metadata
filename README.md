@@ -210,7 +210,8 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
 #### Compress byte vector
 
 You may optionally compress all metadata or specific chunk in it.
-There's function to compress vector<u8> using sort of LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme:
+There's function to compress vector<u8> using sort of LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme,
+does 7.5x compression on a test ascii data ( see compress_tests.move )
 
 ```rust
 let compressed: vector<u8> = metadata::compress(&rawvetoru8);
@@ -222,7 +223,6 @@ and decompress back to original:
 let decompressed: vector<u8> = metadata::decompress(&compressed);
 ```
 
-Compressing is slow and expensive. Decompressing is ok. So as a general advice, it would be better to compress the data on the client side if you plan to store something heavy to use as data in your package code.
 
 #### Running unit tets
 
