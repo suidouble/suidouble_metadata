@@ -231,13 +231,16 @@ module suidouble_metadata::time_capsule {
     public fun decrypt_with_round_signature(encrypted_msg_ref: &vector<u8>, round_signature: vector<u8>): vector<u8> {
         let target_key = bls12381::g1_from_bytes(&round_signature);
         let mut ret: vector<u8> = vector::empty();
-        // encrypted message if metadata with structure of:
-        //    0 -  u64 of chunks count
-        //    1 -  first chunk
-        //    ....
-        //    N -  last chunk
         
-        // first step - get chunks count
+        // encrypted message is vector<u8> oranized as metadata with structure of:
+        //    0 -  first chunk of encrypted 32 bytes, when decrypted, first 4 bytes is original message length and 28 bytes of data
+        //    1 -  second chunk of encrypted 32 bytes, decrypted to 32 bytes of message
+        //    ....
+        //    N -  last chunk of encrypted 32 bytes, 
+        //         last chunk when decrypted may be padded by random bytes, so take a msg length from chunk #0 to trim it
+        //    where 0..N - u32 indexes for metadata library, and chunk is to be get as metadata::get_vec_u8 with it
+
+        // first step - get chunks count as from metadata vector<u8>
         let chunks_count = metadata::get_chunks_count(encrypted_msg_ref); // 
         let mut i = 0;
         let mut msg_length: u32 = 0;
