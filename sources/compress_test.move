@@ -4,7 +4,7 @@ module suidouble_metadata::compress_tests {
 
     use suidouble_metadata::compress;
     // use std::vector;
-    use std::debug;
+    // use std::debug;
     use std::hash;
 
     #[test_only]
@@ -78,8 +78,8 @@ module suidouble_metadata::compress_tests {
         let decompressed_back = compress::decompress(&compressed);
         assert!(decompressed_back == bytevec, 0);
 
-        debug::print(&(compressed.length())); // as it's u8
-        debug::print(&bytevec.length());
+        // debug::print(&(compressed.length())); // as it's u8
+        // debug::print(&bytevec.length());
 
 
         assert!(compressed.length() < bytevec.length(), 0);
@@ -93,8 +93,8 @@ module suidouble_metadata::compress_tests {
         let decompressed_back: vector<u8> = compress::decompress16(&compressed);
         assert!(decompressed_back == bytevec, 0);
 
-        debug::print(&(compressed.length()*2)); // as it's u16
-        debug::print(&bytevec.length());
+        // debug::print(&(compressed.length()*2)); // as it's u16
+        // debug::print(&bytevec.length());
 
         assert!(compressed.length()*2 < bytevec.length(), 0);
     }
@@ -106,8 +106,8 @@ module suidouble_metadata::compress_tests {
         let compressed = compress::compress8(&bytevec);
         let decompressed_back = compress::decompress8(&compressed);
 
-        debug::print(&(compressed.length())); // as it's u8
-        debug::print(&bytevec.length());
+        // debug::print(&(compressed.length())); // as it's u8
+        // debug::print(&bytevec.length());
 
         assert!(decompressed_back == bytevec, 0);
 

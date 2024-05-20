@@ -1,5 +1,7 @@
 # suidouble_metadata
-Move library and a set of tools to store/retrieve/manage any type of data as chunks in u8 vector.
+Move library and a set of tools to store/retrieve/manage any type of data as chunks in u8 vector. Store anything in vector<u8> with no dependency.
+
++ Fluid Data Structure       + Compression      + Time Capsule         + Encryption
 
 #### Usage
 
@@ -14,7 +16,7 @@ struct YourPerfectNFT has key, store {
 ```
 
 and don't have any issues with contract upgrades anymore. 
-You'll be able to store/manage any primitive data in that metadata vector. 
+You'll be able to store/manage any primitive data in that u8 vector. 
 
 And here's the library to help you with this.
 
@@ -222,6 +224,25 @@ and decompress back to original:
 ```rust
 let decompressed: vector<u8> = metadata::decompress(&compressed);
 ```
+
+#### Time Capsule
+
+Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in metadata package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
+
+```rust
+let mut drand = time_capsule::drand_quicknet();
+let for_the_future_ms = clock.timestamp_ms() + 60*60*1000; // encrypt it to be decrypted in 1 hour
+let encrypted:vector<u8> = drand.encrypt_for_time(for_the_future_ms, &b"Hey Sui! Are you ready for the future?");
+let round_n = drand.round_at(for_the_future_ms);
+// get round signature from drand when it becomes available, eg for round_n == 7788475  , api url is:
+// https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/7788475
+// and decrypt the message
+let round_signature = x"a17b758d8ef1a88a1e7f2db59634d5bc40f779ad44d41fe01cc0862bafb23f1510afdb12ff90985c5ed495434e4a19e5";
+let decrypted:vector<u8> = drand.decrypt(&encrypted, round_signature);
+assert!(decrypted == b"Hey Sui! Are you ready for the future?", 0);
+```
+
+Take a look at time_capsule's module unit tests for adding randomness via sui:random, verifying signatures, etc.
 
 
 #### Running unit tets
