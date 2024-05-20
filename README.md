@@ -248,7 +248,7 @@ let decrypted:vector<u8> = drand.decrypt(&encrypted, round_signature);
 assert!(decrypted == b"Hey Sui! Are you ready for the future?", 0);
 ```
 
-Take a look at time_capsule's module unit tests for adding randomness via sui:random, verifying signatures, etc.
+More docs and a sample contact for time_capsule module can be found [here](https://github.com/suidouble/suidouble_metadata/tree/main/examples/time_capsule).
 
 
 #### Running unit tets

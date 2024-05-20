@@ -1,6 +1,6 @@
 # suidouble_metadata::time_capsule
 
-Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in metadata package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
+Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in [suidouble_metadata](https://github.com/suidouble/suidouble_metadata/) package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
 
 `suidouble_metadata::time_capsule` is a module for optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
 
@@ -18,7 +18,7 @@ let encrypted:vector<u8> = drand.encrypt_for_time(1716168794000, &msg);
 
 Message is encrypted. And there's no drand signature yet to decrypt it. All you can do is wait for `May 20 2024` to arrive.
 
-*Note for readers from the future*: you can skip this step, as drand signature may be already available for you.
+*Note for readers from the future*: you can skip this step, as drand signature is already available for you.
 
 So after `Mon May 20 2024 01:33:14 GMT+0000` you can decrypt it:
 
@@ -85,4 +85,4 @@ assert(drand.verify_signature(7784307, &round_signature) == true); // round_sign
 assert(drand.verify_signature(7784206, &round_signature) == false); // but not for different round
 ```
 
-
+Take a look at [time_capsule's unit tests](https://github.com/suidouble/suidouble_metadata/blob/main/sources/time_capsule.move#L421) or sample contract for some inspiration.
