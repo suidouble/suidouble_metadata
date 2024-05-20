@@ -51,6 +51,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 
  - [Set metadata data](#set-metadata-data)
  - [Compress metadata/chunk](#compress-byte-vector)
+ - [Time Capsule Timelock Encryption](#time-capsule)
  - [Get data from metadata](#get-data-from-metadata)
  - [Get information from metadata/Check chunks](#get-information-from-metadata)
  - [Remove data from metadata](#remove-chunk-from-metadata)
@@ -211,7 +212,10 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
 
 #### Compress byte vector
 
-You may optionally compress all metadata or specific chunk in it.
+Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
+
+You may compress all metadata or specific chunk in it.
+
 There's function to compress vector<u8> using sort of LZW (Lempel-Ziv-Welch) algorithm extended with u16->u8 variable-length encoding scheme,
 does 7.5x compression on a test ascii data ( see compress_tests.move )
 
@@ -226,6 +230,8 @@ let decompressed: vector<u8> = metadata::decompress(&compressed);
 ```
 
 #### Time Capsule
+
+Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
 
 Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in metadata package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
 
