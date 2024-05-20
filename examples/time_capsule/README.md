@@ -1,5 +1,7 @@
 # suidouble_metadata::time_capsule
 
+Take a look at the [samle project fortune_cookie](fortune_cookie)
+
 Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in [suidouble_metadata](https://github.com/suidouble/suidouble_metadata/) package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
 
 `suidouble_metadata::time_capsule` is a module for optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
