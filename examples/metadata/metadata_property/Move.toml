@@ -1,0 +1,10 @@
+[package]
+name = "metadata_property"
+version = "0.0.1"
+edition = "2024.beta"
+
+[dependencies]
+suidouble_metadata = { local = "../../../metadata" }
+
+[addresses]
+metadata_property =  "0x0"

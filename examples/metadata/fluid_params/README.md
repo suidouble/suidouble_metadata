@@ -3,7 +3,7 @@
 Pattern to pass multiple params to function as a single argument of metadata vector.
 
 ```rust
-public entry fun set(person: &mut Person, params: &vector<u8>, _ctx: &mut TxContext) {
+public entry fun set(person: &mut Person, params: &vector<u8>) {
     if (metadata::has_chunk_of_type<u64>(params, metadata::key(&b"age"))) {
         person.age = metadata::get_u64(params, metadata::key(&b"age"), 0); // 0 - default
     } else if (metadata::has_chunk_of_type<u8>(params, metadata::key(&b"age"))) { // just a helper so you can pass age as u8 too
@@ -27,7 +27,7 @@ metadata::set(&mut params, metadata::key(&b"age"), &(93 as u64));
 metadata::set(&mut params, metadata::key(&b"sui_address"), &@0xBBBAAA);
 metadata::set(&mut params, metadata::key(&b"name"), &b"Master of Karate");
 
-set(&mut person, &params, ts::ctx(&mut scenario));
+set(&mut person, &params);
 ```
 
 you may build your own logic, make some params required (aborting if they are undefined), support multiple data types etc.
