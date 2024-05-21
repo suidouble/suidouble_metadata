@@ -1,5 +1,5 @@
 # suidouble_metadata
-Move library and a set of tools to store/retrieve/manage any type of data as chunks in u8 vector. Store anything in vector<u8> with no dependency.
+Move library and a set of tools to store, retrieve, and manage any type of data as chunks in a u8 vector. Store anything in the vector<u8> with no dependencies. + Encryption, + Time Capsules, + Compression
 
 | [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | 
 |----------|----------------|-----------|-----------|------|
@@ -270,3 +270,5 @@ sui move test --gas-limit 5000000000
 #### License
 
 GNU AFFERO GENERAL PUBLIC LICENSE
+
+Means, just fork this lib if you are using it for production and do some changes, don't hide it in your project repo.

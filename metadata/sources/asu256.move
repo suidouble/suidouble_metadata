@@ -5,8 +5,8 @@ module suidouble_metadata::asu256 {
 //
 //   up to 31 bytes of data
 //   the highest byte is data length  
-//       0x010000000001 = vector<u8>[1]
-//       0x020000000001 = vector<u8>[0,1];
+//       0x010...0000001 = vector<u8>[1]
+//       0x020...0000001 = vector<u8>[0,1];
 
     // removes the last byte from the asu256 and returns updated asu256
     public fun asu256_shift_back(mut value_u256: u256): u256 {
