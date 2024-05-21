@@ -229,6 +229,8 @@ and decompress back to original:
 let decompressed: vector<u8> = metadata::decompress(&compressed);
 ```
 
+Take a look at example [contact with binary compression](examples/compress).
+
 #### Time Capsule
 
 Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
