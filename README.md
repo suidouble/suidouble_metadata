@@ -1,7 +1,8 @@
 # suidouble_metadata
 Move library and a set of tools to store/retrieve/manage any type of data as chunks in u8 vector. Store anything in vector<u8> with no dependency.
 
-+ Fluid Data Structure       + Compression      + Time Capsule         + Encryption
+| Fluid Data Type | Non-strict Arguments |  Compression | Time Capsule | [Examples](examples) | 
+|----------|----------------|-----------|-----------|------|
 
 #### Usage
 
