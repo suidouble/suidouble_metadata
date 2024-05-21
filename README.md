@@ -230,7 +230,7 @@ and decompress back to original:
 let decompressed: vector<u8> = metadata::decompress(&compressed);
 ```
 
-Take a look at example [contact with binary compression](examples/compress).
+Take a look at example [package with binary compression](examples/compress/compressed_on_chain).
 
 #### Time Capsule
 
