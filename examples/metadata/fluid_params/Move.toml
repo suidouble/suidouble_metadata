@@ -1,0 +1,10 @@
+[package]
+name = "fluid_params"
+version = "0.0.1"
+edition = "2024.beta"
+
+[dependencies]
+suidouble_metadata = { local = "../../../metadata" }
+
+[addresses]
+fluid_params =  "0x0"
