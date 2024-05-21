@@ -1,6 +1,6 @@
 # suidouble_metadata::time_capsule
 
-Take a look at the [samle project fortune_cookie](fortune_cookie)
+Take a look at the samle project [fortune_cookie](fortune_cookie)
 
 Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in [suidouble_metadata](https://github.com/suidouble/suidouble_metadata/) package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
 
@@ -87,4 +87,4 @@ assert(drand.verify_signature(7784307, &round_signature) == true); // round_sign
 assert(drand.verify_signature(7784206, &round_signature) == false); // but not for different round
 ```
 
-Take a look at [time_capsule's unit tests](https://github.com/suidouble/suidouble_metadata/blob/main/sources/time_capsule.move#L421) or sample contract for some inspiration.
+Take a look at [time_capsule's unit tests](https://github.com/suidouble/suidouble_metadata/blob/main/sources/time_capsule.move#L421) or [sample contract](fortune_cookie) for some inspiration.

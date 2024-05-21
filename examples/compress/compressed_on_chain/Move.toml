@@ -1,5 +1,5 @@
 [package]
-name = "fortune_cookie"
+name = "compressed_on_chain"
 version = "0.0.1"
 edition = "2024.beta"
 
@@ -7,4 +7,4 @@ edition = "2024.beta"
 suidouble_metadata = { local = "../../../metadata" }
 
 [addresses]
-fortune_cookie =  "0x0"
+compressed_on_chain =  "0x0"
