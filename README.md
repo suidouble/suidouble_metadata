@@ -1,6 +1,6 @@
 # suidouble_metadata
 
-A `Sui Move` library and a set of tools to store, retrieve, and manage any type of primitive data as chunks in a `vector<u8>`. Store any data in the `vector<u8> `without dependencies and without any `Struct` defined.
+A `Sui Move` library and a set of tools to store, retrieve, and manage any type of primitive data as chunks in a `vector<u8>`. Store any data in the `vector<u8>` without dependencies and without any `Struct` defined.
 
 Few patterns and modules over:
 
