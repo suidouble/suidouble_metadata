@@ -1,5 +1,8 @@
 # suidouble_metadata
-Move library and a set of tools to store, retrieve, and manage any type of data as chunks in a u8 vector. Store anything in the vector<u8> with no dependencies. + Encryption, + Time Capsules, + Compression
+
+A `Sui Move` library and a set of tools to store, retrieve, and manage any type of primitive data as chunks in a `vector<u8>`. Store any data in the `vector<u8> `without dependencies and without any `Struct` defined.
+
+Few patterns and modules over:
 
 | [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | 
 |----------|----------------|-----------|-----------|-----|------|
