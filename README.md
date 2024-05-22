@@ -246,6 +246,14 @@ may have an extra hash at the end in case long string (>4 chars) was hashed:
  - unpack_key(key(b"TEST_long_string")) == b"TEST*005"
  - unpack_key(key(b"TEST_other_string")) == b"TEST*119"
 
+
+#### Modules using suidouble_metadata
+
+ - [suidouble_metadata::compress](#compress-byte-vector) - compressing/decompressing `vector<u8>`
+ - [suidouble_metadata::format](examples/format) - format string like printf/sprintf or Rust format tags
+ - [suidouble_metadata::time_capsule](#time-capsule) - encrypt messages for the future
+
+
 #### Compress byte vector
 
 Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
