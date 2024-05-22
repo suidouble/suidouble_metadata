@@ -1,8 +1,8 @@
 # suidouble_metadata
 Move library and a set of tools to store, retrieve, and manage any type of data as chunks in a u8 vector. Store anything in the vector<u8> with no dependencies. + Encryption, + Time Capsules, + Compression
 
-| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | 
-|----------|----------------|-----------|-----------|------|
+| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | 
+|----------|----------------|-----------|-----------|-----|------|
 
 #### Usage
 
@@ -52,6 +52,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 
  - [Set metadata data](#set-metadata-data)
  - [Compress metadata/chunk](#compress-byte-vector)
+ - [String format, printf/sprintf like](examples/format)
  - [Time Capsule Timelock Encryption](#time-capsule)
  - [Get data from metadata](#get-data-from-metadata)
  - [Get information from metadata/Check chunks](#get-information-from-metadata)

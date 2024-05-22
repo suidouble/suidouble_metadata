@@ -13,6 +13,31 @@ module suidouble_metadata::metadata_tests {
     // use std::string;
 
     #[test]
+    fun test_get_option_any_vec_u256() {
+        let mut metadata: vector<u8> = vector[];
+
+        // set metadata with vectors of different types
+        metadata::set(&mut metadata, metadata::key(&b"vu8"), &vector<u8>[1,2,3,4,255]);
+        metadata::set(&mut metadata, metadata::key(&b"vu16"), &vector<u16>[1,2,3,4,255]);
+        metadata::set(&mut metadata, metadata::key(&b"vu32"), &vector<u32>[1,2,3,4,255]);
+        metadata::set(&mut metadata, metadata::key(&b"vu64"), &vector<u32>[1,2,3,4,255]);
+        metadata::set(&mut metadata, metadata::key(&b"vu128"), &vector<u128>[1,2,3,4,255]);
+        metadata::set(&mut metadata, metadata::key(&b"vu256"), &vector<u256>[1,2,3,4,255]);
+
+        assert!(metadata::get_chunks_count(&metadata) == 6, 0);
+
+        // still may be read to vector<u256> with get_any_vec_u256 and get_option_any_vec_u256
+        let expected_result:vector<u256> = vector[1,2,3,4,255];
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu8")) == expected_result, 0);
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu16")) == expected_result, 0);
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu32")) == expected_result, 0);
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu64")) == expected_result, 0);
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu128")) == expected_result, 0);
+        assert!(metadata::get_any_vec_u256(&metadata, metadata::key(&b"vu256")) == expected_result, 0);
+    }
+
+
+    #[test]
     fun test_key_hash() {
 
         assert!(  metadata::key(&b"") == metadata::key(&b"")  , 0);

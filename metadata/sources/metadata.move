@@ -72,6 +72,13 @@ module suidouble_metadata::metadata {
         utils::unpack_key(key)
     }
 
+    public fun single<T>(value: &T): vector<u8> {
+        let mut ret:vector<u8> = vector::empty();
+        set(&mut ret, 0, value);
+
+        ret
+    }
+
     /**
     *  Get count of chunks in metadata vector<u8>
     */
@@ -529,6 +536,80 @@ module suidouble_metadata::metadata {
         return destroy_with_default(get_option_u256(metadata_ref, chunk_id), default)
     }
 
+    /// Get any u, u8, u16, u32, u64, u128, u256   as a single u256 from the chunk of metadata
+    /// Use this if you don't remember what type of number you set chunk value to
+    //    as u256 can hold everything  ( address too , by the way )
+    // returns Option, none() if there's no such chunk
+    public fun get_option_any_u256(metadata_ref: &vector<u8>, chunk_id: u32): Option<u256> {
+        let meta_chunk_option_binary = get(metadata_ref, chunk_id);
+        if (is_none(&meta_chunk_option_binary)) {
+            return none()
+        };
+        let mut bytes = option::destroy_some(meta_chunk_option_binary);
+        vector::reverse(&mut bytes);
+        let number_as_bytes_length = vector::length(&bytes);
+        let mut i = 0;
+        let mut value:u256 = 0;
+        while (i < number_as_bytes_length) {
+            value = (value << 8) | (  (*vector::borrow(&bytes, i)) as u256  );
+            i = i + 1;
+        };
+        some(value)
+    }
+    /// Get any u, u8, u16, u32, u64, u128, u256   as a single u256 from the chunk of metadata, 
+    /// with default parameter in case there's no such chunk
+    public fun get_any_u256(metadata_ref: &vector<u8>, chunk_id: u32, default: u256): u256 {
+        return destroy_with_default(get_option_any_u256(metadata_ref, chunk_id), default)
+    }
+
+    /// Get any vec, vec<u8>, vec<u16>, vec<u32>, vec<u64>, vec<u128>, vec<u256>, vec<bool>, vec<address>
+    //     as vec<u256>
+    // Use this if you don't remember what type of number you set chunk value to, or want to support many
+    // returns Option, none() if there's no such chunk or can't get vector length for it
+    public fun get_option_any_vec_u256(metadata_ref: &vector<u8>, chunk_id: u32): Option<vector<u256>> {
+        let meta_chunk_option_binary = get(metadata_ref, chunk_id);
+        if (is_none(&meta_chunk_option_binary)) {
+            return none()
+        };
+        let binary = destroy_some(meta_chunk_option_binary);
+        let mut b = bcs::new( binary );
+        let vec_length = bcs::peel_vec_length( &mut b );
+        let remaining_bytes = bcs::into_remainder_bytes( b );
+        let bytes_length = vector::length(&remaining_bytes);
+
+        if (vec_length == 0 || bytes_length == 0) {
+            return some(vector::empty())
+        };
+
+        // we expect remaining bytes length to be evenly dividable by vec_length
+        if (bytes_length % vec_length != 0) {
+            return some(vector::empty())
+        };
+
+        let item_byte_length = bytes_length / vec_length;
+        let mut ret:vector<u256> = vector::empty();
+
+        // read items one by one and convert to u256
+        let mut i = 0;
+        while (i < bytes_length) {
+            let mut j = 0;
+            let mut value:u256 = 0;
+            while (j < item_byte_length) {
+                value = value | (  (*vector::borrow(&remaining_bytes, (i+j))) as u256  ) << (8*(j as u8));
+                j = j + 1;
+            };
+            vector::push_back(&mut ret, value);
+            i = i + item_byte_length;
+        };
+
+        some(ret)
+    }
+    // Get any vec, vec<u8>, vec<u16>, vec<u32>, vec<u64>, vec<u128>, vec<u256>, vec<bool>, vec<address>
+    //    as vec<u256>
+    /// returns empty vec if there's no such chunk or can not get vector out of it
+    public fun get_any_vec_u256(metadata_ref: &vector<u8>, chunk_id: u32): vector<u256> {
+        return destroy_with_default(get_option_any_vec_u256(metadata_ref, chunk_id), vector::empty())
+    }
 
 
     /// Get `bool` from the chunk of metadata, returns Option, none() if there's no such chunk

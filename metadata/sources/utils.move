@@ -1,8 +1,5 @@
 
 module suidouble_metadata::utils {
-    // use sui::bls12381;
-    // use std::debug;
-    // use sui::group_ops;
 
     /**
     *  Pack a string into u32 in a hash way, 
