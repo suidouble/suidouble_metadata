@@ -28,7 +28,7 @@ use suidouble_metadata::metadata;
 #### Quick usage example
 
 ```rust
-let meta: vector<u8> = vector::empty(); // or = b"";
+let mut meta: vector<u8> = vector::empty(); // or = b"";
 
 metadata::set(&mut meta, metadata::key(b"your_age"), &(27u8));
 metadata::set(&mut meta, metadata::key(b"your_mood"), b"happy");
@@ -51,18 +51,32 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 ```
 
  - [Set metadata data](#set-metadata-data)
- - [Compress metadata/chunk](#compress-byte-vector)
- - [String format, printf/sprintf like](examples/format)
- - [Time Capsule Timelock Encryption](#time-capsule)
  - [Get data from metadata](#get-data-from-metadata)
  - [Get information from metadata/Check chunks](#get-information-from-metadata)
  - [Remove data from metadata](#remove-chunk-from-metadata)
  - [Key hash function](#key-hash-function)
  - [Unpacking the key back to vector<u8>/string](#unpacking-the-key-back-to-vectorstring)
+ - [Compress metadata/chunk](#compress-byte-vector)
+ - [String format, printf/sprintf like](examples/format)
+ - [Time Capsule Timelock Encryption](#time-capsule)
  - [Running unit tests](#running-unit-tets)
 
 
 #### Set metadata data
+
+You can initialize a metadata vector<u8> as an empty vector, like:
+
+```rust
+let mut meta:vector<u8> = b"";
+```
+
+or with helping method returning a metadata with single element at `key == 0`:
+
+```rust
+let mut meta:vector<u8> = metadata::single(&any_primitive_value);
+```
+
+And add as many values as you want into it with:
 
 ```rust
 public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
@@ -120,6 +134,21 @@ metadata::get_vec_u64(&meta, metadata::key(b"key"))      : vector<u64>;
 metadata::get_vec_u128(&meta, metadata::key(b"key"))     : vector<u128>;
 metadata::get_vec_address(&meta, metadata::key(b"key"))  : vector<address>;
 metadata::get_vec_vec_u8(&meta, metadata::key(b"key"))   : vector<vector<u8>>;
+```
+
+and two extra methods to get number of any type and vec of numbers, supports any unsigned from u8 to u256:
+
+```rust
+metadata::set(&mut meta, metadata::key(b"key1"), &(200u8));
+metadata::set(&mut meta, metadata::key(b"key2"), &(200u128));
+metadata::get_any_u256(&meta, metadata::key(b"key1")) == metadata::get_any_u256(&meta, metadata::key(b"key2")) // both u256 == 200
+```
+
+```rust
+metadata::set(&mut meta, metadata::key(b"key1"), &(vector<u8>[1,2,3,4]));
+metadata::set(&mut meta, metadata::key(b"key2"), &(vector<u128>[1,2,3,4]));
+metadata::get_any_vec_u256(&meta, metadata::key(b"key1"))     : vector<u256>; // same vectors
+metadata::get_any_vec_u256(&meta, metadata::key(b"key1"))     : vector<u256>; // same vectors of vector<u256>[1,2,3,4]
 ```
 
 #### Get information from metadata
