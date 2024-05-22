@@ -299,16 +299,20 @@ More docs and a sample contact for time_capsule module can be found [here](https
 
 #### Running unit tets
 
-Compressing function is expensive and slow. If unit test fails with timeout, increase gas for it:
+There're few heavy unit tests I tried to comment out, but in case you want to run them, you can increase gas limit for testing:
 
 ```bash
 sui move test --gas-limit 5000000000
 ```
+Not obvious, but it works for running tests falling into timeouts.
+
 
 #### todo
 
  - optimization of compress function
- - javacript library to deserialize data on the client side and perform compression to prepare vector to sui
+ - javacrript library to serialize/deserialize metadata on the client side
+ - javascript for time capsules encrypting
+ - some web UI to edit/debug/prettyprint metadata 
 
 #### License
 
