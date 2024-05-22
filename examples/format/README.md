@@ -8,7 +8,7 @@ Accepts a [metadata](../../)'s `vector<u8>` as a list of arguments.
 format::format(&b"Hey {}", &metadata::single(&b"world")) == b"Hey world"
 ```
 
-Multiple and named argumets support:
+Multiple and named arguments support:
 
 ```rust
 let mut meta:vector<u8> = b"";
