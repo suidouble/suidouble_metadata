@@ -81,7 +81,7 @@ let mut meta:vector<u8> = metadata::single(&any_primitive_value);
 
 And add as many values as you want into it with:
 
-```move
+```rust
 public fun set<T>(metadata: &mut vector<u8>, chunk_id: u32, value: &T): bool {
 ```
 
@@ -102,7 +102,7 @@ Futhermore, there's compress function to help you fit everything into 250KB Sui'
 
 Function signature is the same for all value types, so would work:
 
-```move
+```rust
 metadata::set(&mut meta, metadata::key(b"property"), &(27u8));
 metadata::set(&mut meta, metadata::key(b"property"), &(vector_of_u8_u8));
 ```
