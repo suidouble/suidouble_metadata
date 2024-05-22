@@ -45,7 +45,7 @@ Named tags and formats may be combined:
 format(&b"Hey {balance:i} {what:s}", &meta) == b"Hey 91 world"
 ```
 
-With helping methods to format `std::acsii` and `std::string` Strings: `format_ascii` and `format_string`, which accept and return related module `String` objects.
+With helping methods to format `std::acsii` and `std::string` Strings: `format_ascii` and `format_string`, accept and return related module `String` objects.
 
 ```rust
 let ascii_string = ascii::string(b"Try format as String object, {:s}, ok?");
@@ -59,3 +59,5 @@ let output_utf8_string = format::format_string(&utf8_string, &metadata::single(&
 assert!(output_utf8_string.bytes() == b"Try format as String 💧 object, w🌐rld, ok?", 0);
 debug::print(&output_utf8_string);
 ```
+
+Take a look at [format module and its unit tests](../../metadata/sources/format.move)
