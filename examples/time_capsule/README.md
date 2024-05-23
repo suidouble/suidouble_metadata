@@ -75,7 +75,8 @@ let drand2 = time_capsule::drand_quicknet(gen.generate_bytes(32));
 // drand1 and drand2 produce different results with same inputs
 assert!(drand1.encrypt_for_time(1716168794000, &msg) != drand2.encrypt_for_time(1716168794000, &msg), 0);
 // still both may be decrypted to same original message
-assert!(drand1.decrypt(&encrypted1, round_signature) != drand2.decrypt(&encrypted1, round_signature), 0);
+assert!(drand1.decrypt(&encrypted1, round_signature) == drand2.decrypt(&encrypted2, round_signature), 0);
+assert!(drand2.decrypt(&encrypted1, round_signature) == drand1.decrypt(&encrypted2, round_signature), 0); // same, randomness is not needed for decryption
 ```
 
 No need to store randomness for decryption, actually, you don't even need drand chain settings for it, only drand's chain public key is needed.
