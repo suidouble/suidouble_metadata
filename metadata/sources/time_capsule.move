@@ -40,8 +40,7 @@ module suidouble_metadata::time_capsule {
 //
 //   assert(!decrypted == msg);
 //
-//  Take a look at unit tests in the bottom, or check some more code for your inspiration:
-//  https://github.com/MystenLabs/sui/blob/80e63921f791a1af97342f9aa854af2804186eb2/sui_programmability/examples/crypto/sources/ec_ops.move
+//  Take a look at unit tests in the bottom, or check sample pacage for inspiration.
 
     #[test_only]
     use sui::clock;

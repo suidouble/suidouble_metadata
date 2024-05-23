@@ -90,4 +90,4 @@ assert(drand.verify_signature(7784307, &round_signature) == true); // round_sign
 assert(drand.verify_signature(7784206, &round_signature) == false); // but not for different round
 ```
 
-Take a look at [time_capsule's unit tests](https://github.com/suidouble/suidouble_metadata/blob/main/sources/time_capsule.move#L421) or [sample contract](fortune_cookie) for some inspiration.
+Take a look at [time_capsule's unit tests](https://github.com/suidouble/suidouble_metadata/blob/main/metadata/sources/time_capsule.move#L421) or [sample contract](fortune_cookie) for some inspiration.
