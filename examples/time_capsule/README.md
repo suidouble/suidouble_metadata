@@ -8,7 +8,7 @@ Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts ca
 
 There're [few drand chains](https://api.drand.sh/chains), this library has helpers to work with `quicknet` one, which has a hash of [52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971](https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/info)
 
-*** Obvious Security Reminder: *** for real-world sensitive data, encryption should be performed off-chain, as attacker may decode your original message just from tx history. Feel free to use this module on your local or wait for us to implement encryption in Javascript.
+*** Obvious Security Reminder: *** for real-world sensitive data, encryption should be performed off-chain, and using randomness is required, as attacker may decode your original message just from tx history. Feel free to use this module on your local or wait for us to implement encryption in Javascript.
 
 ### basic usage
 
@@ -70,8 +70,8 @@ There's a random sigma involved in encryption algorythm, and random bytes paddin
 
 ```rust
 let mut gen = sui::random::new_generator(...);
-let drand1 = time_capsule::drand_quicknet(gen.generate_bytes(32));
-let drand2 = time_capsule::drand_quicknet(gen.generate_bytes(32));
+let drand1 = time_capsule::drand_quicknet_with_randomness(gen.generate_bytes(32));
+let drand2 = time_capsule::drand_quicknet_with_randomness(gen.generate_bytes(32));
 // drand1 and drand2 produce different results with same inputs
 assert!(drand1.encrypt_for_time(1716168794000, &msg) != drand2.encrypt_for_time(1716168794000, &msg), 0);
 // still both may be decrypted to same original message
