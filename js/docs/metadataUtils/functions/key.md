@@ -33,4 +33,4 @@ Pack a string into the number holding a maximum of 4 bytes of data
 
 ## Defined in
 
-metadataUtils.ts:91
+[metadataUtils.ts:91](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/metadataUtils.ts#L91)

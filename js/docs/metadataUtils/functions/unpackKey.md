@@ -26,4 +26,4 @@ Unpack key back to the string vector of it,
 
 ## Defined in
 
-metadataUtils.ts:42
+[metadataUtils.ts:42](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/metadataUtils.ts#L42)

@@ -4,9 +4,9 @@
 
 # suidouble_metadata
 
-JavaScript/TS library implementing the logic of [Suidouble_metadata Move module](https://github.com/suidouble/suidouble_metadata), letting you storing/managing any type of primitive data inside a single Uint8Array.
+JavaScript/TS library implementing the logic of [Suidouble_metadata Move module](https://github.com/suidouble/suidouble_metadata), letting you storing/managing any type of primitive data inside a single Uint8Array on the front-end side.
 
-The only sui dependency is `@mysten/bcs` which is quite tiny, so feel free to use this library for other chains or off-chain data serilization.
+The only dependency is `@mysten/bcs` which is quite light, so feel free to use this library for other chains or off-chain data serilization.
 
 ## Installation
 
@@ -99,6 +99,10 @@ const unpacked = unpackKey(key('TEST_other_string')); // "TEST*119"
 
 ## Get chunk from metadata
 
+- `.getAnyU256(chunkId, defaultValue)`, `.getAnyVecU256(chunkId)` and `.getVecVecU8(chunkId)` would let you cover any types of data. Another often used one is `.getString(chunkId)`
+
+More detailed:
+
 - `.get(chunkId)` - get raw chunk of data as Uint8Array | null if there's no chunk for this chunkId
 - `.getU8(chunkId, defaultValue)` `.getU16(chunkId, defaultValue)` `.getU32(chunkId, defaultValue)` - get a number from chunk, returns `defaultValue` if there's no such chunk
 - `.getU64(chunkId, defaultValue)` `.getU128(chunkId, defaultValue)`  `.getU256(chunkId, defaultValue)` - get a bigint from chunk, returns `defaultValue` if there's no such chunk
@@ -123,11 +127,15 @@ const unpacked = unpackKey(key('TEST_other_string')); // "TEST*119"
 
 ### Remove a chunk from metadata
 
-- `.removeChunk(chunkId)`
+- `.removeChunk(chunkId)` remove a chunk from internal Uint8Array
 
 ### Get binary represenation of metadata
 
 - `.toBytes()` - returns `Uint8Array` you can use it to pass to move methods or deserialize Metadata again with `new Metadata(bytes)`
+
+### More docs
+
+- [Generated typedoc for Metadata methods](https://github.com/suidouble/suidouble_metadata/blob/main/js/docs/Metadata/classes/Metadata.md)
 
 #### License
 

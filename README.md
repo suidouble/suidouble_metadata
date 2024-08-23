@@ -4,8 +4,8 @@ A `Sui Move` library and a set of tools to store, retrieve, and manage any type 
 
 Few patterns and modules over:
 
-| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | 
-|----------|----------------|-----------|-----------|-----|------|
+| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | [JS/TS side library](js) | 
+|----------|----------------|-----------|-----------|-----|------|------|
 
 #### Usage
 
@@ -296,6 +296,10 @@ assert!(decrypted == b"Hey Sui! Are you ready for the future?", 0);
 
 More docs and a sample contact for time_capsule module can be found [here](https://github.com/suidouble/suidouble_metadata/tree/main/examples/time_capsule).
 
+#### Sui Metadata on the frontend
+
+Take a look at [js library suidouble_metadata](js) following the same logic and fully compatible with this Move module, so you can serialize the data on the
+front-end side and use as parameter executing Move methods, or read metada `vector<u8>` directly from the blockchain via rpc with no need for transaction blocks.
 
 #### Running unit tets
 
@@ -310,7 +314,6 @@ Not obvious, but it works for running tests falling into timeouts.
 #### todo
 
  - optimization of compress function
- - javacrript library to serialize/deserialize metadata on the client side
  - javascript for time capsules encrypting
  - some web UI to edit/debug/prettyprint metadata 
 

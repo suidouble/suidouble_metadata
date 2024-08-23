@@ -1,6 +1,6 @@
 {
   "name": "suidouble_metadata",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "module": "./dist/suidouble_metadata.js",
   "type": "module",
   "author": "Jeka Kiselyov <jeka911@gmail.com> (https://github.com/jeka-kiselyov)",
@@ -27,8 +27,7 @@
     "lint:styles": "stylelint ./**/*.{css,scss}",
     "format:scripts": "prettier . --write",
     "format:styles": "stylelint ./**/*.{css,scss} --fix",
-    "format": "npm run format:scripts && npm run format:styles",
-    "prepare": "npm run test && npm run docs && npm run build"
+    "format": "npm run format:scripts && npm run format:styles"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",

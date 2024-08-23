@@ -22,7 +22,7 @@
 
 #### Defined in
 
-Metadata.ts:8
+[Metadata.ts:8](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L8)
 
 ## Properties
 
@@ -32,7 +32,7 @@ Metadata.ts:8
 
 #### Defined in
 
-Metadata.ts:7
+[Metadata.ts:7](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L7)
 
 ## Accessors
 
@@ -46,7 +46,7 @@ Metadata.ts:7
 
 #### Defined in
 
-Metadata.ts:20
+[Metadata.ts:20](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L20)
 
 ## Methods
 
@@ -66,7 +66,7 @@ Get Uint8Array for a chunkId from metadata, returns null if there's no data for 
 
 #### Defined in
 
-Metadata.ts:359
+[Metadata.ts:359](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L359)
 
 ***
 
@@ -86,7 +86,7 @@ Get a address string from chunk, set as set(chunkId, 'address', '0x25345345...')
 
 #### Defined in
 
-Metadata.ts:123
+[Metadata.ts:123](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L123)
 
 ***
 
@@ -109,7 +109,7 @@ Get any u, u8, u16, u32, u64, u128, u256   as a single u256 from the chunk of me
 
 #### Defined in
 
-Metadata.ts:271
+[Metadata.ts:271](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L271)
 
 ***
 
@@ -129,7 +129,7 @@ Get any vec, vec<u8>, vec<u16>, vec<u32>, vec<u64>, vec<u128>, vec<u256>, vec<bo
 
 #### Defined in
 
-Metadata.ts:217
+[Metadata.ts:217](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L217)
 
 ***
 
@@ -149,7 +149,7 @@ Get a `bool` from the chunk of metadata vector, returns defaultValue if there's 
 
 #### Defined in
 
-Metadata.ts:319
+[Metadata.ts:319](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L319)
 
 ***
 
@@ -169,7 +169,7 @@ Get length of metadata chunk located at metadata_offset in metadata
 
 #### Defined in
 
-Metadata.ts:380
+[Metadata.ts:380](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L380)
 
 ***
 
@@ -189,7 +189,7 @@ Find offset at which chunk_id metadata chunk is located inside metadata
 
 #### Defined in
 
-Metadata.ts:501
+[Metadata.ts:501](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L501)
 
 ***
 
@@ -203,7 +203,7 @@ Metadata.ts:501
 
 #### Defined in
 
-Metadata.ts:24
+[Metadata.ts:24](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L24)
 
 ***
 
@@ -219,7 +219,7 @@ Get chunks ids in metadata vector<u8>
 
 #### Defined in
 
-Metadata.ts:525
+[Metadata.ts:525](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L525)
 
 ***
 
@@ -239,7 +239,7 @@ Get a string from vector<u8> chunk, set as set(chunkId, 'string', 'value');
 
 #### Defined in
 
-Metadata.ts:116
+[Metadata.ts:116](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L116)
 
 ***
 
@@ -261,7 +261,7 @@ Get a `u128` bigint from the chunk of metadata vector, returns defaultValue if t
 
 #### Defined in
 
-Metadata.ts:345
+[Metadata.ts:345](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L345)
 
 ***
 
@@ -283,7 +283,7 @@ Get a `u16` from the chunk of metadata vector, returns defaultValue if there's n
 
 #### Defined in
 
-Metadata.ts:325
+[Metadata.ts:325](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L325)
 
 ***
 
@@ -305,7 +305,7 @@ Get a `u256` bigint from the chunk of metadata vector, returns defaultValue if t
 
 #### Defined in
 
-Metadata.ts:351
+[Metadata.ts:351](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L351)
 
 ***
 
@@ -327,7 +327,7 @@ Get a `u32` from the chunk of metadata vector, returns defaultValue if there's n
 
 #### Defined in
 
-Metadata.ts:331
+[Metadata.ts:331](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L331)
 
 ***
 
@@ -349,7 +349,7 @@ Get a `u64` bigint from the chunk of metadata vector, returns defaultValue if th
 
 #### Defined in
 
-Metadata.ts:339
+[Metadata.ts:339](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L339)
 
 ***
 
@@ -371,7 +371,7 @@ Get a `u8` from the chunk of metadata vector, returns defaultValue if there's no
 
 #### Defined in
 
-Metadata.ts:313
+[Metadata.ts:313](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L313)
 
 ***
 
@@ -391,7 +391,7 @@ Get a vector of `address` from the chunk of metadata vector, returns empty array
 
 #### Defined in
 
-Metadata.ts:133
+[Metadata.ts:133](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L133)
 
 ***
 
@@ -411,7 +411,7 @@ Get a vector of `bool` from the chunk of metadata vector, returns empty array if
 
 #### Defined in
 
-Metadata.ts:155
+[Metadata.ts:155](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L155)
 
 ***
 
@@ -431,7 +431,7 @@ Get length of vector inside chunk_id
 
 #### Defined in
 
-Metadata.ts:489
+[Metadata.ts:489](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L489)
 
 ***
 
@@ -451,7 +451,7 @@ Get a vector of `u128` from the chunk of metadata vector, returns empty Array if
 
 #### Defined in
 
-Metadata.ts:196
+[Metadata.ts:196](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L196)
 
 ***
 
@@ -471,7 +471,7 @@ Get a vector of `u16`  from the chunk of metadata vector, returns empty Uint16Ar
 
 #### Defined in
 
-Metadata.ts:166
+[Metadata.ts:166](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L166)
 
 ***
 
@@ -491,7 +491,7 @@ Get a vector of `u256` from the chunk of metadata vector, returns empty Array if
 
 #### Defined in
 
-Metadata.ts:206
+[Metadata.ts:206](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L206)
 
 ***
 
@@ -511,7 +511,7 @@ Get a vector of `u32`  from the chunk of metadata vector, returns empty Uint32Ar
 
 #### Defined in
 
-Metadata.ts:176
+[Metadata.ts:176](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L176)
 
 ***
 
@@ -531,7 +531,7 @@ Get a vector of `u64` from the chunk of metadata vector, returns empty Array if 
 
 #### Defined in
 
-Metadata.ts:186
+[Metadata.ts:186](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L186)
 
 ***
 
@@ -551,7 +551,7 @@ Get a vector of `u8` (eg string) from the chunk of metadata vector, returns empt
 
 #### Defined in
 
-Metadata.ts:144
+[Metadata.ts:144](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L144)
 
 ***
 
@@ -571,7 +571,7 @@ Get a vector of binary Uint8Array from the chunk of metadata vector, returns emp
 
 #### Defined in
 
-Metadata.ts:256
+[Metadata.ts:256](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L256)
 
 ***
 
@@ -591,7 +591,7 @@ Returns true, if there's metadata chunk with id of chunkId
 
 #### Defined in
 
-Metadata.ts:470
+[Metadata.ts:470](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L470)
 
 ***
 
@@ -613,7 +613,7 @@ Returns true, if there's metadata chunk with id of chunk_id and it has type of t
 
 #### Defined in
 
-Metadata.ts:392
+[Metadata.ts:392](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L392)
 
 ***
 
@@ -637,7 +637,7 @@ bigint
 
 #### Defined in
 
-Metadata.ts:40
+[Metadata.ts:40](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L40)
 
 ***
 
@@ -657,7 +657,7 @@ Remove a chunk from metadata
 
 #### Defined in
 
-Metadata.ts:100
+[Metadata.ts:100](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L100)
 
 ***
 
@@ -681,7 +681,7 @@ Set metadata chunk of ChunkId to value
 
 #### Defined in
 
-Metadata.ts:50
+[Metadata.ts:50](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L50)
 
 ***
 
@@ -697,7 +697,7 @@ Get binary Uint8Array of metadata
 
 #### Defined in
 
-Metadata.ts:31
+[Metadata.ts:31](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L31)
 
 ***
 
@@ -717,4 +717,4 @@ Read u32 (LE 4 bytes) from specified position in vector<u8>
 
 #### Defined in
 
-Metadata.ts:543
+[Metadata.ts:543](https://github.com/suidouble/suidouble_metadata/blob/c8de98ef7d95eb7a554d8420554b54fe98e6d77e/js/src/Metadata.ts#L543)

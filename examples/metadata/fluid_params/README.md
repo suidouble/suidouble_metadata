@@ -32,4 +32,6 @@ set(&mut person, &params);
 
 you may build your own logic, make some params required (aborting if they are undefined), support multiple data types etc.
 
+In real world applications, you may probably want to construct param on the front-end with [suidouble_metadata javascript library](https://github.com/suidouble/suidouble_metadata/tree/main/js)
+
 Take a look at example code and unit test inside of it.
