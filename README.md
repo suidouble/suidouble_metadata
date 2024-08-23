@@ -4,7 +4,7 @@ A `Sui Move` library and a set of tools to store, retrieve, and manage any type 
 
 Few patterns and modules over:
 
-| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | [JS/TS side library](js) | 
+| [Fluid Data Type](examples/metadata/metadata_property) | [Non-strict Arguments](examples/metadata/fluid_params) |  [String Format/sprintf](examples/format) |  [Compression](#compress-byte-vector) | [Time Capsule](#time-capsule) | [Examples](examples) | [JS/TS library](js) | 
 |----------|----------------|-----------|-----------|-----|------|------|
 
 #### Usage
