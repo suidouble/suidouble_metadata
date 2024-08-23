@@ -55,7 +55,7 @@ if (!metadata::has_chunk_of_type<vector<address>>(&meta, metadata::key(b"once"))
 
  - [Set metadata data](#set-metadata-data)
  - [Get data from metadata](#get-data-from-metadata)
- - [Javascript/Ts suidouble_metadata library](#sui-metadata-on-the-frontend)
+ - [Javascript/Ts suidouble_metadata library](#sui-metadata-on-the-frontendnodejs)
  - [Get information from metadata/Check chunks](#get-information-from-metadata)
  - [Remove data from metadata](#remove-chunk-from-metadata)
  - [Key hash function](#key-hash-function)
