@@ -297,7 +297,7 @@ assert!(decrypted == b"Hey Sui! Are you ready for the future?", 0);
 
 More docs and a sample contact for time_capsule module can be found [here](https://github.com/suidouble/suidouble_metadata/tree/main/examples/time_capsule).
 
-#### Sui Metadata on the frontend
+#### Sui Metadata on the frontend/node.js
 
 Take a look at [js library suidouble_metadata](js) following the same logic and fully compatible with this Move module, so you can serialize the data on the
 front-end side and use as parameter executing Move methods, or read metada `vector<u8>` directly from the blockchain via rpc with no need for transaction blocks.
