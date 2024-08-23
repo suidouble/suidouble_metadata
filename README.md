@@ -277,7 +277,7 @@ Take a look at example [package with binary compression](examples/compress/compr
 
 #### Time Capsule
 
-Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own vector<u8> as a library.
+Optional binary primitive. Feel free to use it for metadata chunks, the whole metadata vector, or your own `vector<u8>` as a library.
 
 Timelock Encryption (TLE) is a cryptographic primitive with which ciphertexts can only be decrypted after the specified time. There's a module in metadata package to create TimeCapsules using randomness of [DRand chain](https://drand.love/).
 
@@ -318,4 +318,4 @@ Not obvious, but it works for running tests falling into timeouts.
 
 GNU AFFERO GENERAL PUBLIC LICENSE
 
-Means, just fork this lib if you are using it for production and do some changes, don't hide it in your project repo.
+Means, just fork this lib if you are using it for production and do some changes, don't hide it in your private project repo.

@@ -30,7 +30,7 @@ module suidouble_metadata::format {
 
     // just a wrapper for format function accepting std::string String and returning it
     public fun format_string(string_str_ref: &string::String, meta: &vector<u8>): string::String {
-        string::utf8(format(string::bytes(string_str_ref), meta))
+        string::utf8(format(string::as_bytes(string_str_ref), meta))
     }
 
     // format a string using Rust-style format syntax, using metadata vector for arguments,
@@ -458,7 +458,7 @@ module suidouble_metadata::format {
 
         let utf8_string = string::utf8(b"Try format as String 💧 object, {:s}, ok?");         // emoji not recognized as printable automatically, force s
         let output_utf8_string = format_string(&utf8_string, &metadata::single(&b"w🌐rld"));
-        assert!(output_utf8_string.bytes() == b"Try format as String 💧 object, w🌐rld, ok?", 0);
+        assert!(output_utf8_string.as_bytes() == b"Try format as String 💧 object, w🌐rld, ok?", 0);
     }
 
     #[test]

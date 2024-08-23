@@ -1,0 +1,64 @@
+{
+  "name": "suidouble_metadata",
+  "version": "0.0.6",
+  "module": "./dist/suidouble_metadata.js",
+  "type": "module",
+  "author": "Jeka Kiselyov <jeka911@gmail.com> (https://github.com/jeka-kiselyov)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suidouble/suidouble_metadata.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/suidouble_metadata.js"
+    },
+    "./dist/": {
+      "import": "./dist/"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite --host",
+    "docs": "npx typedoc --plugin typedoc-plugin-markdown src/*",
+    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint:scripts": "eslint . --ext .ts",
+    "lint:styles": "stylelint ./**/*.{css,scss}",
+    "format:scripts": "prettier . --write",
+    "format:styles": "stylelint ./**/*.{css,scss} --fix",
+    "format": "npm run format:scripts && npm run format:styles",
+    "prepare": "npm run test && npm run docs && npm run build"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitest/coverage-v8": "^2.0.4",
+    "copyfiles": "^2.4.1",
+    "dts-bundle-generator": "^9.5.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.40",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "stylelint": "^16.8.1",
+    "stylelint-config-recommended": "^14.0.1",
+    "stylelint-config-sass-guidelines": "^12.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.2",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.26.6",
+    "typedoc-plugin-markdown": "^4.2.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.4"
+  },
+  "dependencies": {
+    "@mysten/bcs": "^1.0.4"
+  }
+}
