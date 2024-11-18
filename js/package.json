@@ -1,9 +1,21 @@
 {
   "name": "suidouble_metadata",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "module": "./dist/suidouble_metadata.js",
   "type": "module",
   "author": "Jeka Kiselyov <jeka911@gmail.com> (https://github.com/jeka-kiselyov)",
+  "keywords": [
+    "sui",
+    "move",
+    "uint8array",
+    "serialization",
+    "deserialization",
+    "encryption",
+    "encoding",
+    "binary"
+  ],
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/suidouble/suidouble_metadata",
   "repository": {
     "type": "git",
     "url": "https://github.com/suidouble/suidouble_metadata.git"
@@ -20,7 +32,7 @@
   "scripts": {
     "dev": "vite --host",
     "docs": "npx typedoc --plugin typedoc-plugin-markdown src/*",
-    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
+    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build && copyfiles ./README.md build",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint:scripts": "eslint . --ext .ts",

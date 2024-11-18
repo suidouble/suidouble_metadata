@@ -20,8 +20,8 @@ meta.set('chunk2Key', [2222n,333n]);
 const asBytes = meta.toBytes(); // Uint8Array
 
 const restored = new Metadata(asBytes);
-const string = meta.getString('chunkKey'); // 'chunkValue'
-const arr = meta.getAnyVecU256('chunk2Key'); // [2222n,333n]
+const string = restored.getString('chunkKey'); // 'chunkValue'
+const arr = restored.getAnyVecU256('chunk2Key'); // [2222n,333n]
 ```
 
 ## Add chunk to metadata
