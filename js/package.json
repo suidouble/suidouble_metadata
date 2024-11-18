@@ -1,6 +1,6 @@
 {
   "name": "suidouble_metadata",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "module": "./dist/suidouble_metadata.js",
   "type": "module",
   "author": "Jeka Kiselyov <jeka911@gmail.com> (https://github.com/jeka-kiselyov)",
