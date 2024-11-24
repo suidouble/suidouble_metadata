@@ -520,6 +520,28 @@ export class Metadata {
     }
 
     /**
+    *  Call callback for each chunk in metadata. Works little faster then itterating with getChunksIds() -> get..()
+    * 
+    *  callback - callback(chunkId, chunkUint8Array)
+    */
+    public forEach(callback: Function) {
+        let pos = 1n; // skip byte #0 as it's metadata version
+        const metadataLength = this.byteLength;
+
+        while (pos < metadataLength) {
+            let offsetChunkId = this.u32FromLEBytesAtOffset(pos);
+            let offsetChunkLength = this.u32FromLEBytesAtOffset(pos + 4n); 
+
+            let from = pos + 8n; // skip chunk_header
+            let till = pos + offsetChunkLength;
+
+            callback(Number(offsetChunkId), this.serialized.subarray(Number(from), Number(till)));
+
+            pos = pos + offsetChunkLength;
+        }
+    }
+
+    /**
     *  Get chunks ids in metadata vector<u8>
     */
     public getChunksIds(): Array<bigint> {
